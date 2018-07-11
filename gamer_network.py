@@ -20,8 +20,8 @@ def extract_data(data_line, flag):
         return False
     data = data_line.split(flag)
     attribute = data.pop().split(', ')
-    user = data.pop()
-    return user, attribute
+    data.append(attribute)
+    return data
 
 def string_to_data(string):
     raw_lines = string.split('.')
@@ -31,3 +31,23 @@ def string_to_data(string):
         if data:
             data_lines.append(data)
     return data_lines
+
+def create_data_structure(string_input):
+    raw_lines = string_input.split('.')
+    user_data = {}
+    connections_data = []
+    while raw_lines:
+        line = raw_lines.pop()
+        new_user = extract_data(line, ' likes to play ')
+        if new_user:
+            add_new_user(user_data, new_user[0], new_user[1])
+        else:
+            connections_data.append(line)
+    while connections_data:
+        line = connections_data.pop()
+        connections = extract_data(line, ' is connected to ')
+        if connections:
+            user_A = connections[0]
+            for user_B in connections[1]:
+                add_connection(user_data, user_A, user_B)
+    return user_data
