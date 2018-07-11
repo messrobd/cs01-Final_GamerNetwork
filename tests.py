@@ -1,4 +1,12 @@
-import gamer_network
+from gamer_network import add_new_user
+
+network = {}
+network_with_user = {
+  'John': {}
+}
+
+print add_new_user(network, 'John', ['Pokemon'])
+print add_new_user(network_with_user, 'John', ['Pokemon'])
 
 example_input="John is connected to Bryant, Debra, Walter.\
 John likes to play The Movie: The Game, The Legend of Corgi, Dinosaur Diner.\
