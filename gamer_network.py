@@ -15,30 +15,19 @@ def add_connection(network, user_A, user_B):
     else:
         return False
 
-def extract_connections(data_line):
-    flag = ' is connected to '
+def extract_data(data_line, flag):
     if flag not in data_line:
         return False
-    connections = data_line.split(flag)
-    connected_to = connections.pop().split(', ')
-    connections.append(connected_to)
-    return connections
-
-def extract_games(data_line):
-    flag = ' likes to play '
-    if flag not in data_line:
-        return False
-    games = data_line.split(flag)
-    games_liked = games.pop().split(', ')
-    games.append(games_liked)
-    return games
+    data = data_line.split(flag)
+    attribute = data.pop().split(', ')
+    user = data.pop()
+    return user, attribute
 
 def string_to_data(string):
     raw_lines = string.split('.')
     data_lines = []
     for line in raw_lines:
-        if extract_connections(line):
-            data_lines.append(extract_connections(line))
-        elif extract_games(line):
-            data_lines.append(extract_games(line))
+        data = extract_data(line, ' is connected to ') or extract_data(line, ' likes to play ')
+        if data:
+            data_lines.append(data)
     return data_lines

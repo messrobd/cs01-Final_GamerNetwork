@@ -1,4 +1,4 @@
-from gamer_network import add_new_user, add_connection, string_to_data, extract_connections, extract_games
+from gamer_network import add_new_user, add_connection, string_to_data, extract_data
 '''
 network = {}
 network_with_john = {
@@ -32,10 +32,10 @@ print add_connection(network_with_connection, user_A, user_B)
 connection_string = "John is connected to Bryant, Debra, Walter."
 game_string = "John likes to play The Movie: The Game, The Legend of Corgi, Dinosaur Diner."
 
-print extract_connections(connection_string)
-print extract_connections(game_string)
-print extract_games(connection_string)
-print extract_games(game_string)
+print extract_data(connection_string, ' is connected to ')
+print extract_data(game_string, ' is connected to ')
+print extract_data(connection_string, ' likes to play ')
+print extract_data(game_string, ' likes to play ')
 
 string_john = "John is connected to Bryant, Debra, Walter.\
 John likes to play The Movie: The Game, The Legend of Corgi, Dinosaur Diner."
