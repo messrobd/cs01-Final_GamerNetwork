@@ -29,11 +29,6 @@ print add_connection(network, user_A, user_B)
 print add_connection(network_with_beatles, user_A, user_B)
 print add_connection(network_with_connection, user_A, user_B)
 '''
-string_john = "John is connected to Bryant, Debra, Walter.\
-John likes to play The Movie: The Game, The Legend of Corgi, Dinosaur Diner."
-
-print string_to_data(string_john)
-
 connection_string = "John is connected to Bryant, Debra, Walter."
 game_string = "John likes to play The Movie: The Game, The Legend of Corgi, Dinosaur Diner."
 
@@ -41,6 +36,11 @@ print extract_connections(connection_string)
 print extract_connections(game_string)
 print extract_games(connection_string)
 print extract_games(game_string)
+
+string_john = "John is connected to Bryant, Debra, Walter.\
+John likes to play The Movie: The Game, The Legend of Corgi, Dinosaur Diner."
+
+print string_to_data(string_john)
 
 example_input="John is connected to Bryant, Debra, Walter.\
 John likes to play The Movie: The Game, The Legend of Corgi, Dinosaur Diner.\

@@ -37,6 +37,8 @@ def string_to_data(string):
     raw_lines = string.split('.')
     data_lines = []
     for line in raw_lines:
-        if line:
-            data_lines.append(line)
+        if extract_connections(line):
+            data_lines.append(extract_connections(line))
+        elif extract_games(line):
+            data_lines.append(extract_games(line))
     return data_lines
