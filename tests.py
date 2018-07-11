@@ -1,12 +1,33 @@
-from gamer_network import add_new_user
+from gamer_network import add_new_user, add_connection
 
 network = {}
-network_with_user = {
+network_with_john = {
   'John': {}
 }
+network_with_beatles = {
+  'John': {},
+  'Paul': {},
+  'George': {},
+  'Ringo': {}
+}
+
+network_with_connection = {
+  'John': {
+    'connections': ['Paul']
+  },
+  'Paul': {},
+  'George': {},
+  'Ringo': {}
+}
+
+user_A = 'John'
+user_B = 'Paul'
 
 print add_new_user(network, 'John', ['Pokemon'])
-print add_new_user(network_with_user, 'John', ['Pokemon'])
+print add_new_user(network_with_john, 'John', ['Pokemon'])
+print add_connection(network, user_A, user_B)
+print add_connection(network_with_beatles, user_A, user_B)
+print add_connection(network_with_connection, user_A, user_B)
 
 example_input="John is connected to Bryant, Debra, Walter.\
 John likes to play The Movie: The Game, The Legend of Corgi, Dinosaur Diner.\
