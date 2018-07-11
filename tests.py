@@ -1,5 +1,5 @@
-from gamer_network import add_new_user, add_connection
-
+from gamer_network import add_new_user, add_connection, string_to_data, extract_connections, extract_games
+'''
 network = {}
 network_with_john = {
   'John': {}
@@ -28,6 +28,19 @@ print add_new_user(network_with_john, 'John', ['Pokemon'])
 print add_connection(network, user_A, user_B)
 print add_connection(network_with_beatles, user_A, user_B)
 print add_connection(network_with_connection, user_A, user_B)
+'''
+string_john = "John is connected to Bryant, Debra, Walter.\
+John likes to play The Movie: The Game, The Legend of Corgi, Dinosaur Diner."
+
+print string_to_data(string_john)
+
+connection_string = "John is connected to Bryant, Debra, Walter."
+game_string = "John likes to play The Movie: The Game, The Legend of Corgi, Dinosaur Diner."
+
+print extract_connections(connection_string)
+print extract_connections(game_string)
+print extract_games(connection_string)
+print extract_games(game_string)
 
 example_input="John is connected to Bryant, Debra, Walter.\
 John likes to play The Movie: The Game, The Legend of Corgi, Dinosaur Diner.\
