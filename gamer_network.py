@@ -65,3 +65,25 @@ def get_games_liked(network, user):
     if 'games' not in network[user]:
         return []
     return network[user]['games']
+
+def get_secondary_connections(network, user):
+    if user not in network:
+        return None
+    if 'connections' not in network[user]:
+        return []
+    secondary_connections = []
+    for connection in network[user]['connections']:
+        secondary_connections += network[connection]['connections']
+    return secondary_connections
+
+def count_common_connections(network, user_A, user_B):
+    if user_A not in network or user_B not in network:
+        return False
+    common_connections = 0
+    if 'connections' in network[user_A] and 'connections' in network[user_B]:
+        connections_A = network[user_A]['connections']
+        connections_B = network[user_B]['connections']
+        for connection in connections_A:
+            if connection in connections_B:
+                common_connections += 1
+    return common_connections

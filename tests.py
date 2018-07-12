@@ -110,3 +110,7 @@ print get_connections(network, 'John')
 print get_connections(network, 'Paul')
 print get_games_liked(network, 'John')
 print get_games_liked(network, 'Paul')
+
+print get_secondary_connections(network, 'John')
+print count_common_connections(network, 'John', 'Walter')
+print count_common_connections(network, 'John', 'Paul')
