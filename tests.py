@@ -66,21 +66,26 @@ Jennie likes to play Super Mushroom Man, Dinosaur Diner, Call of Arms.\
 Robin is connected to Ollie.\
 Robin likes to play Call of Arms, Dwarves and Swords.\
 Freda is connected to Olive, John, Debra.\
-Freda likes to play Starfleet Commander, Ninja Hamsters, Seahorse Adventures."
+Freda likes to play Starfleet Commander, Ninja Hamsters, Seahorse Adventures.\
+George is connected to Robin.\
+George likes to play Ninja Hamsters."
 
 network = create_data_structure(example_input)
 
 print network
 ''' >>>
-{'Freda': {
+{'John': {
+'connections': ['Bryant', 'Debra', 'Walter'],
+'games': ['The Movie: The Game', 'The Legend of Corgi', 'Dinosaur Diner']},
+'Freda': {
 'connections': ['Olive', 'John', 'Debra'],
 'games': ['Starfleet Commander', 'Ninja Hamsters', 'Seahorse Adventures']},
 'Ollie': {
 'connections': ['Mercedes', 'Freda', 'Bryant'],
 'games': ['Call of Arms', 'Dwarves and Swords', 'The Movie: The Game']},
-'Debra': {
-'connections': ['Walter', 'Levi', 'Jennie', 'Robin'],
-'games': ['Seven Schemers', 'Pirates in Java Island', 'Dwarves and Swords']},
+'Robin': {
+'connections': ['Ollie'],
+'games': ['Call of Arms', 'Dwarves and Swords']},
 'Mercedes': {
 'connections': ['Walter', 'Robin', 'Bryant'],
 'games': ['The Legend of Corgi', 'Pirates in Java Island', 'Seahorse Adventures']},
@@ -93,12 +98,12 @@ print network
 'Olive': {
 'connections': ['John', 'Ollie'],
 'games': ['The Legend of Corgi', 'Starfleet Commander']},
-'John': {
-'connections': ['Bryant', 'Debra', 'Walter'],
-'games': ['The Movie: The Game', 'The Legend of Corgi', 'Dinosaur Diner']},
-'Robin': {
-'connections': ['Ollie'],
-'games': ['Call of Arms', 'Dwarves and Swords']},
+'Debra': {
+'connections': ['Walter', 'Levi', 'Jennie', 'Robin'],
+'games': ['Seven Schemers', 'Pirates in Java Island', 'Dwarves and Swords']},
+'George': {
+'connections': ['Robin'],
+'games': ['Ninja Hamsters']},
 'Bryant': {
 'connections': ['Olive', 'Ollie', 'Freda', 'Mercedes'],
 'games': ['City Comptroller: The Fiscal Dilemma', 'Super Mushroom Man']},
@@ -114,3 +119,9 @@ print get_games_liked(network, 'Paul')
 print get_secondary_connections(network, 'John')
 print count_common_connections(network, 'John', 'Walter')
 print count_common_connections(network, 'John', 'Paul')
+
+print find_path_to_friend(network, 'John', 'Bryant')
+print find_path_to_friend(network, 'John', 'Olive')
+print find_path_to_friend(network, 'John', 'Freda')
+print find_path_to_friend(network, 'John', 'Levi')
+print find_path_to_friend(network, 'Robin', 'George')

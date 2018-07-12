@@ -87,3 +87,29 @@ def count_common_connections(network, user_A, user_B):
             if connection in connections_B:
                 common_connections += 1
     return common_connections
+
+'''
+find path to friend
+
+return a list of connections starting with user_A and ending with user_B.
+return None if no path is found, or if one of the users is not in the network.
+
+connection ==> user_B
+connection ==> user_A
+connection ==> connection(user_B) '''
+
+def find_path_to_friend(network, user_A, user_B, visited=[]):
+    if user_A not in network or user_B not in network:
+        return None
+    if user_B in network[user_A]['connections']:
+        return [user_A, user_B]
+    if user_A in visited:
+        return None
+    else:
+        visited.append(user_A)
+    path = [user_A]
+    for connection in network[user_A]['connections']:
+        target_user = find_path_to_friend(network, connection, user_B)
+        if target_user != None and user_B in target_user:
+            del visited[:]
+            return path + target_user
