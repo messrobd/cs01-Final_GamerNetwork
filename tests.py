@@ -1,4 +1,4 @@
-from gamer_network import add_new_user, add_connection, string_to_data, extract_data, create_data_structure
+from gamer_network import *
 '''
 network = {}
 network_with_john = {
@@ -68,8 +68,10 @@ Robin likes to play Call of Arms, Dwarves and Swords.\
 Freda is connected to Olive, John, Debra.\
 Freda likes to play Starfleet Commander, Ninja Hamsters, Seahorse Adventures."
 
-print create_data_structure(example_input)
-''' >>> 
+network = create_data_structure(example_input)
+
+print network
+''' >>>
 {'Freda': {
 'connections': ['Olive', 'John', 'Debra'],
 'games': ['Starfleet Commander', 'Ninja Hamsters', 'Seahorse Adventures']},
@@ -103,3 +105,8 @@ print create_data_structure(example_input)
 'Walter': {
 'connections': ['John', 'Levi', 'Bryant'],
 'games': ['Seahorse Adventures', 'Ninja Hamsters', 'Super Mushroom Man']}} '''
+
+print get_connections(network, 'John')
+print get_connections(network, 'Paul')
+print get_games_liked(network, 'John')
+print get_games_liked(network, 'Paul')

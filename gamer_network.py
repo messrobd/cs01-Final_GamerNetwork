@@ -51,3 +51,17 @@ def create_data_structure(string_input):
             for user_B in connections[1]:
                 add_connection(user_data, user_A, user_B)
     return user_data
+
+def get_connections(network, user):
+    if user not in network:
+        return None
+    if 'connections' not in network[user]:
+        return []
+    return network[user]['connections']
+
+def get_games_liked(network, user):
+    if user not in network:
+        return None
+    if 'games' not in network[user]:
+        return []
+    return network[user]['games']
