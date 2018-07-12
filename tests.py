@@ -125,3 +125,5 @@ print find_path_to_friend(network, 'John', 'Olive')
 print find_path_to_friend(network, 'John', 'Freda')
 print find_path_to_friend(network, 'John', 'Levi')
 print find_path_to_friend(network, 'Robin', 'George')
+
+print most_liked_game(network)
