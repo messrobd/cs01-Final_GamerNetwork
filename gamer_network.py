@@ -98,20 +98,21 @@ connection ==> user_B
 connection ==> user_A
 connection ==> connection(user_B) '''
 
-def find_path_to_friend(network, user_A, user_B, visited=[]):
-    if user_A not in network or user_B not in network:
-        return None
-    if user_B in network[user_A]['connections']:
-        return [user_A, user_B]
+def find_path_to_friend(network, user_A, user_B, visited = None):
+    if visited is None:
+        visited = []
     if user_A in visited:
         return None
     else:
         visited.append(user_A)
+    if user_A not in network or user_B not in network:
+        return None
+    if user_B in network[user_A]['connections']:
+        return [user_A, user_B]
     path = [user_A]
     for connection in network[user_A]['connections']:
-        target_user = find_path_to_friend(network, connection, user_B)
+        target_user = find_path_to_friend(network, connection, user_B, visited)
         if target_user != None and user_B in target_user:
-            del visited[:]
             return path + target_user
 
 def most_liked_game(network):
@@ -120,7 +121,7 @@ def most_liked_game(network):
     Output: the game liked by the most users
     Behaviour: loops over all the users and games, counting the number of times
     each game appears in the users' liked games. Loops over the resulting
-    dictionary and finds the games with the highest count. 
+    dictionary and finds the games with the highest count.
     '''
     all_games = {}
     for user in network:
