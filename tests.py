@@ -45,6 +45,13 @@ John likes to play The Movie: The Game, The Legend of Corgi, Dinosaur Diner."
 print create_data_structure(string_john)
 print create_data_structure('')
 
+network = create_data_structure('')
+network = add_new_user(network, 'Alice', [])
+network = add_new_user(network, 'Bob', [])
+network = add_connection(network, 'Alice', 'Bob')
+print network
+print get_secondary_connections(network, 'Alice')
+
 example_input="John is connected to Bryant, Debra, Walter.\
 John likes to play The Movie: The Game, The Legend of Corgi, Dinosaur Diner.\
 Bryant is connected to Olive, Ollie, Freda, Mercedes.\

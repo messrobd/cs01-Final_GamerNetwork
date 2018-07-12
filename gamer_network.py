@@ -73,7 +73,10 @@ def get_secondary_connections(network, user):
         return []
     secondary_connections = []
     for connection in network[user]['connections']:
-        secondary_connections += network[connection]['connections']
+        if 'connections' in network[connection]:
+            for connection2 in network[connection]['connections']:
+                if connection2 not in secondary_connections:
+                    secondary_connections.append(connection2)
     return secondary_connections
 
 def count_common_connections(network, user_A, user_B):
@@ -106,6 +109,8 @@ def find_path_to_friend(network, user_A, user_B, visited = None):
     else:
         visited.append(user_A)
     if user_A not in network or user_B not in network:
+        return None
+    if 'connections' not in network[user_A] or 'connections' not in network[user_B]:
         return None
     if user_B in network[user_A]['connections']:
         return [user_A, user_B]
